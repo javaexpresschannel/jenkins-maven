@@ -40,9 +40,9 @@ pipeline {
             }
         }
         stage('archving') { 
-            
+            steps {
                 archiveArtifacts '**/target/*.jar'
-            
+            }
         }
     }
 }
