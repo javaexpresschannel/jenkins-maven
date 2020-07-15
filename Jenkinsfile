@@ -25,6 +25,14 @@ pipeline {
                 
             }
             
+         
+                
+ 
+        }
+        
+         stage('archving') { 
+           
+            
             steps {
                        archiveArtifacts '**/ProductionPipeline/target/**.jar'
             }
