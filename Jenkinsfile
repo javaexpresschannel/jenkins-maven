@@ -34,7 +34,7 @@ pipeline {
            
             
             steps {
-                       archiveArtifacts '**/ProductionPipeline/target/**.jar'
+                       archiveArtifacts '/var/lib/jenkins/workspace/ProductionPipeline/target/**.jar'
             }
                 
  
