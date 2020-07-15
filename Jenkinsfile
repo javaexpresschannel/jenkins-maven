@@ -21,8 +21,10 @@ pipeline {
             steps {
                 
                     sh 'mvn package'
+                    
                 
             }
+            archiveArtifacts '**/ProductionPipeline/target/**.jar'
         }
     }
 }
