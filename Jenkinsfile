@@ -24,7 +24,12 @@ pipeline {
                     
                 
             }
-            archiveArtifacts '**/ProductionPipeline/target/**.jar'
+            
+            steps {
+                       archiveArtifacts '**/ProductionPipeline/target/**.jar'
+            }
+                
+ 
         }
     }
 }
