@@ -11,7 +11,12 @@ pipeline {
             steps {
                 sh "mvn test site"
             }
-        }
+            
+             post {
+                always {
+                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'   
+                }
+      }        }
         
         stage('Deploy') { 
             steps {
