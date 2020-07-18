@@ -17,22 +17,4 @@ public class AppTest
     {
         assertTrue( true );
     }
-    
-     @Test
-    public void shouldAnswerWithTrue1()
-    {
-        assertTrue( true );
-    }
-    
-     @Test
-    public void shouldAnswerWithTrue2()
-    {
-        assertTrue( true );
-    }
-    
-    @Test(expected = ArithmeticException.class)
-    public void shouldAnswerWithTrue3()
-    {
-        assertTrue( true );
-    }
 }
