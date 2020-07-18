@@ -15,6 +15,7 @@ pipeline {
             post {
                 always {
                     junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'   
+                    publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: "target/test", reportFiles: 'index.html', reportName: "Java Express test report"])
                  
                 }
             }
