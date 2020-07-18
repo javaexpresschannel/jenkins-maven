@@ -15,7 +15,7 @@ pipeline {
             always { 
                 junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'            
             }
-        }
+        
     }            
             
             
