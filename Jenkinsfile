@@ -12,13 +12,7 @@ pipeline {
                 sh "mvn test site"
             }
             
-            post {
-                always {
-                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'   
-                    publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: "target/site", reportFiles: 'index.html', reportName: "Java Express test report"])
-                 
-                }
-            }
+            
         }
         
         stage('Deploy') { 
