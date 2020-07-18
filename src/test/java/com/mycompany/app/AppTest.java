@@ -30,7 +30,7 @@ public class AppTest
         assertTrue( true );
     }
     
-     @Test
+    @Test(expected = ArithmeticException.class)
     public void shouldAnswerWithTrue3()
     {
         assertTrue( true );
