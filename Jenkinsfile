@@ -19,6 +19,13 @@ pipeline {
             }     
         }
 
+        stage('deploy') { 
+            steps {
+                sh "mvn package"
+            }
+        }
+
+
         stage('Build Docker image'){
             steps {
                 sh 'docker build -t anvbhaskar/my-app:${BUILD_NUMBER} .'
@@ -33,12 +40,7 @@ pipeline {
             }                
         }
 
-        stage('Deploy') { 
-            steps {
-                sh "mvn package"
-            }
-        }
-
+        
         stage('Archving') { 
             steps {
                  archiveArtifacts '**/target/*.jar'
