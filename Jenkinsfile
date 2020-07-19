@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build Docker image'){
             steps {
-                sh 'docker build -t anvbhaskar/my-app:${BUILD_NUMBER}'
+                sh 'docker build -t anvbhaskar/my-app:${BUILD_NUMBER} .'
             }
         }
 
