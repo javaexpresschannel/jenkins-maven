@@ -20,13 +20,17 @@ pipeline {
         }
 
         stage('Build Docker image'){
-            sh 'docker build -t anvbhaskar/my-app:${BUILD_NUMBER}'
+            steps {
+                sh 'docker build -t anvbhaskar/my-app:${BUILD_NUMBER}'
+            }
         }
 
         stage('Docker Login & Push'){
-            withCredentials([string(credentialsId: 'dockerPWD', variable: 'dockerPwd')]) {
+            
+            steps {
+                withCredentials([string(credentialsId: 'dockerPWD', variable: 'dockerPwd')]) {
                sh 'docker login -u anvbhaskar -p ${dockerPwd}'
-            }
+            }                
         }
 
         stage('Deploy') { 
@@ -34,7 +38,7 @@ pipeline {
                 sh "mvn package"
             }
         }
-        
+
         stage('Archving') { 
             steps {
                  archiveArtifacts '**/target/*.jar'
