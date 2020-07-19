@@ -32,12 +32,18 @@ pipeline {
             }
         }
 
-        stage('Docker Login & Push'){
+        stage('Docker Login'){
             
             steps {
                 withCredentials([string(credentialsId: 'dockerPWD', variable: 'dockerPwd')]) {
                sh 'docker login -u anvbhaskar -p ${dockerPwd}' }
             }                
+        }
+
+        stage('Docker Push'){
+            steps {
+                sh 'docker push anvbhaskar/my-app:${BUILD_NUMBER}'
+            }
         }
 
         
