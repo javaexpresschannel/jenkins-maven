@@ -28,21 +28,22 @@ pipeline {
 
         stage('Build Docker image'){
             steps {
-                sh 'docker build -t anvbhaskar/my-app:${BUILD_NUMBER} .'
+                sh 'docker build -t anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER} .'
             }
         }
 
         stage('Docker Login'){
             
             steps {
-                withCredentials([string(credentialsId: 'dockerPWD', variable: 'dockerPwd')]) {
-               sh 'docker login -u anvbhaskar -p ${dockerPwd}' }
+                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+                    sh "docker login -u anvbhaskar -p ${Dockerpwd}"
+                }
             }                
         }
 
         stage('Docker Push'){
             steps {
-                sh 'docker push anvbhaskar/my-app:${BUILD_NUMBER}'
+                sh 'docker push anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER}'
             }
         }
 
