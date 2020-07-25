@@ -49,7 +49,7 @@ pipeline {
         
         stage('Docker deploy'){
             steps {
-                sh 'docker run -it -p 8081:8080 anvbhaskar/springboot:0.0.3'
+                sh 'docker run -itd -p 8081:8080 anvbhaskar/springboot:0.0.3'
             }
         }
 
