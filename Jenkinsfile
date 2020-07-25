@@ -46,6 +46,12 @@ pipeline {
                 sh 'docker push anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER}'
             }
         }
+        
+        stage('Docker deploy'){
+            steps {
+                sh 'docker run -it -p 8081:8080 anvbhaskar/springboot:0.0.3'
+            }
+        }
 
         
         stage('Archving') { 
