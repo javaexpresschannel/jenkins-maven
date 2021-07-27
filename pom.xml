@@ -28,6 +28,14 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.danekja/jdk-serializable-functional -->
+<dependency>
+    <groupId>org.danekja</groupId>
+    <artifactId>jdk-serializable-functional</artifactId>
+    <version>1.8.1</version>
+</dependency>
+
   </dependencies>
 
   <build>
