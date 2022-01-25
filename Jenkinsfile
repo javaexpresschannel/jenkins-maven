@@ -4,12 +4,12 @@ pipeline {
         stage('Compile and Clean') { 
             steps {
 
-                sh "mvn clean compile"
+                bat "mvn clean compile"
             }
         }
         stage('Test') { 
             steps {
-                sh "mvn test site"
+                bat "mvn test site"
             }
             
              post {
@@ -21,14 +21,14 @@ pipeline {
 
         stage('deploy') { 
             steps {
-                sh "mvn package"
+                bat "mvn package"
             }
         }
 
 
         stage('Build Docker image'){
             steps {
-                sh 'docker build -t anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER} .'
+                bat 'docker build -t anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER} .'
             }
         }
 
@@ -36,20 +36,20 @@ pipeline {
             
             steps {
                  withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                    sh "docker login -u anvbhaskar -p ${Dockerpwd}"
+                    bat "docker login -u anvbhaskar -p ${Dockerpwd}"
                 }
             }                
         }
 
         stage('Docker Push'){
             steps {
-                sh 'docker push anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER}'
+                bat 'docker push anvbhaskar/docker_jenkins_pipeline:${BUILD_NUMBER}'
             }
         }
         
         stage('Docker deploy'){
             steps {
-                sh 'docker run -itd -p 8081:8080 anvbhaskar/springboot:0.0.3'
+                bat 'docker run -itd -p 8081:8080 anvbhaskar/springboot:0.0.3'
             }
         }
 
